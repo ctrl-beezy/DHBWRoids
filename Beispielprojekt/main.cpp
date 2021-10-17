@@ -1,14 +1,18 @@
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
 
+double x = 0;
+double y = 0;
+double r = 0;
 class GameWindow : public Gosu::Window
 {
 public:
-
+	Gosu::Image bild;
 	GameWindow()
-		: Window(800, 600)
+		: Window(1048, 720),
+		bild("rakete.png")
 	{
-		set_caption("Gosu Tutorial mit Git");
+		set_caption("DHBWRoids");
 	}
 
 	// Wird bis zu 60x pro Sekunde aufgerufen.
@@ -16,11 +20,17 @@ public:
 	// dann werden `draw` Aufrufe ausgelassen und die Framerate sinkt
 	void draw() override
 	{
-		graphics().draw_line(
-			10, 20, Gosu::Color::RED,
-			200, 100, Gosu::Color::GREEN,
-			0.0
-		);
+
+		r = r - 5 * input().down(Gosu::KB_J);
+		r = r + 5 * input().down(Gosu::KB_K);
+
+		x = x - 5 * input().down(Gosu::KB_A);
+		x = x + 5 * input().down(Gosu::KB_D);
+
+		y = y - 5 * input().down(Gosu::KB_W);
+		y = y + 5 * input().down(Gosu::KB_S);
+
+		bild.draw_rot(x, y, 0.0, r);
 	}
 
 	// Wird 60x pro Sekunde aufgerufen
