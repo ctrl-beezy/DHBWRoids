@@ -1,15 +1,18 @@
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
+#include <cstdint>
 
-double x = 0;
-double y = 0;
+uint16_t WINDOWWIDTH = 1048;
+uint16_t WINDOWHEIGHT = 720;
+double x = WINDOWWIDTH/2;
+double y = WINDOWHEIGHT/2;
 double r = 0;
 class GameWindow : public Gosu::Window
 {
 public:
 	Gosu::Image bild;
 	GameWindow()
-		: Window(1048, 720),
+		: Window(WINDOWWIDTH, WINDOWHEIGHT),
 		bild("rakete.png")
 	{
 		set_caption("DHBWRoids");
@@ -24,11 +27,11 @@ public:
 		r = r - 5 * input().down(Gosu::KB_J);
 		r = r + 5 * input().down(Gosu::KB_K);
 
-		x = x - 5 * input().down(Gosu::KB_A);
-		x = x + 5 * input().down(Gosu::KB_D);
+		x = fmod(abs((x - 5 * input().down(Gosu::KB_A))), WINDOWWIDTH);
+		x = int32_t(x + 5 * input().down(Gosu::KB_D))%WINDOWWIDTH;
 
-		y = y - 5 * input().down(Gosu::KB_W);
-		y = y + 5 * input().down(Gosu::KB_S);
+		y = double(int32_t(y - 5 * input().down(Gosu::KB_W))%WINDOWHEIGHT);
+		y = int32_t(y + 5 * input().down(Gosu::KB_S))%WINDOWHEIGHT;
 
 		bild.draw_rot(x, y, 0.0, r);
 	}
