@@ -1,9 +1,10 @@
 #pragma once
 class GameObject
 {
-	double positionX;
-	double positionY;
-	double velocity;
+	double x;
+	double y;
+	double dx;
+	double dy;
 	
 	public:
 		double get_position();
@@ -22,7 +23,7 @@ class Projectile : public GameObject
 
 };
 
-class Enemy : public GameObject
+class asteroid : public GameObject
 {
 
 };
