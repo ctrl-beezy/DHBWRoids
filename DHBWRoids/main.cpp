@@ -1,46 +1,74 @@
+// The complete Gosu library.
 #include <Gosu/Gosu.hpp>
+// Makes life a little easier when compiling the game in Visual C++.
 #include <Gosu/AutoLink.hpp>
-#include <cstdint>
-#include "game_math.h"
 
-uint16_t WINDOWWIDTH = 1920;
-uint16_t WINDOWHEIGHT = 1080;
-double x = WINDOWWIDTH/2;
-double y = WINDOWHEIGHT/2;
-double r = 0;
+#include <cmath>
+#include <cstdlib>
+#include <list>
+#include <memory>
+#include <string>
+#include <vector>
+#include "game_math.h"
+#include "GameObjects.h"
+
+const uint16_t WINDOWWIDTH = 1280;
+const uint16_t WINDOWHEIGHT = 720;
+
+
 class GameWindow : public Gosu::Window
 {
+    std::unique_ptr<Gosu::Image> background_image;
+    std::vector<Projectile> projectiles;
+    Player player = { "media/Starfighter.bmp", 0.96, 0.7, 0};
+
 public:
-	Gosu::Image bild;
-	GameWindow()
-		: Window(WINDOWWIDTH, WINDOWHEIGHT),
-		bild("Assets/ship.png")
-	{
-		set_caption("DHBWRoids");
-	}
+    GameWindow()
+        : Window(WINDOWWIDTH, WINDOWHEIGHT)
+    {
+        set_caption("DHBWROIDS");
 
-	// Wird bis zu 60x pro Sekunde aufgerufen.
-	// Wenn die Grafikkarte oder der Prozessor nicht mehr hinterherkommen,
-	// dann werden `draw` Aufrufe ausgelassen und die Framerate sinkt
-	void draw() override
-	{
+        std::string filename = "Assets/space.png";
+        background_image.reset(new Gosu::Image(filename, Gosu::IF_TILEABLE));
 
-		r = r - 5 * input().down(Gosu::KB_J);
-		r = r + 5 * input().down(Gosu::KB_L);
+        player.warp(WINDOWWIDTH/2, WINDOWHEIGHT/2);
+    }
 
-		x = mathMod(double(x - 5 * input().down(Gosu::KB_A)), WINDOWWIDTH);
-		x = int32_t(x + 5 * input().down(Gosu::KB_D))%WINDOWWIDTH;
+    void update() override
+    {
+        if (Gosu::Input::down(Gosu::KB_A)) {
+            player.turn_left();
+        }
+        if (Gosu::Input::down(Gosu::KB_D)) {
+            player.turn_right();
+        }
+        if (Gosu::Input::down(Gosu::KB_W)) {
+            player.accelerate();
+        }
+        if (Gosu::Input::down(Gosu::KB_S)) {
+            player.deaccelerate();
+        }
+        player.move();
+        if (Gosu::Input::down(Gosu::KB_SPACE)) {
+            projectiles.push_back();
+        }
+    }
 
-		y = double(int32_t(y + 5 * input().down(Gosu::KB_S))%WINDOWHEIGHT);
-		y = mathMod(double(y - 5 * input().down(Gosu::KB_W)), WINDOWWIDTH);
+    void draw()
+    {
+        player.draw();
+        background_image->draw(0, 0);
+    }
 
-		bild.draw_rot(x, y, 0.0, r);
-	}
-
-	// Wird 60x pro Sekunde aufgerufen
-	void update() override
-	{
-	}
+    void button_down(Gosu::Button button) override
+    {
+        if (button == Gosu::KB_ESCAPE) {
+            close();
+        }
+        else {
+            Window::button_down(button);
+        }
+    }
 };
 
 // C++ Hauptprogramm
