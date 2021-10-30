@@ -83,7 +83,7 @@ public:
 };
 
 class Projectile : public GameObject {
-    Projectile(std::string filename = ) : image(filename)
+    Projectile(std::string filename = "Assets/Bilder/Projektil1") : image(filename)
     {
         pos_x = pos_y = vel_x = vel_y = angle = 0;
     }
