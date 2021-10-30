@@ -1,14 +1,12 @@
 #include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
-#include <vector>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <random>
-#include <time.h>
 
 extern  uint16_t WINDOWWIDTH;
 extern	uint16_t WINDOWHEIGHT;
+
+public:
+	GameWindow()
+		:Window(WINDOWWIDTH, WINDOWHEIGHT, true);
 
 void menue() override
 {
