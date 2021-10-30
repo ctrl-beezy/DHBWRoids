@@ -14,7 +14,11 @@ class GameObject
 
 class PlayerCharacter : public GameObject
 {
+	Gosu::Sample beep;
 
+public:
+	Player()
+		:beep(Gosu::resource_prefix()+"Assets/Laser-Sound.wav")
 };
 
 class Projectile : public GameObject
