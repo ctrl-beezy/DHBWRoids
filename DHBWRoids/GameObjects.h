@@ -18,11 +18,12 @@ class GameObject
 public:
     Gosu::Image image;
     Gosu::Sample beep;
-    double pos_x, pos_y, vel_x, vel_y, angle;
+    double pos_x, pos_y, vel_x, vel_y, angle , drag;
 
     GameObject(std::string filename) : image(filename)
     {
         pos_x = pos_y = vel_x = vel_y = angle = 0;
+        drag = 1;
     }
 
     void warp(double x, double y)
@@ -32,7 +33,16 @@ public:
     }
     void draw() const
     {
-        image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.4, 0.5, 1, 1);
+        image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.4, 0.4, 1, 1);
+    }
+
+    void move()
+    {
+        pos_x = Gosu::wrap(pos_x + vel_x, 0.0, double(WINDOWWIDTH));
+        pos_y = Gosu::wrap(pos_y + vel_y, 0.0, double(WINDOWHEIGHT));
+
+        vel_x *= drag;
+        vel_y *= drag;
     }
 };
 
@@ -45,7 +55,7 @@ public:
     int16_t reload_time;
     Gosu::Sample beep;
     
-    Player(double d = 0.96, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/Laser-Sound.wav") : GameObject(filename), beep(soundname) {
+    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/Laser-Sound.wav") : GameObject(filename), beep(soundname) {
         drag = d;
         accel = a;
         score = s;
@@ -53,12 +63,12 @@ public:
     }
     void turn_left()
     {
-        angle -= 4.5;
+        angle -= 5;
     }
 
     void turn_right()
     {
-        angle += 4.5;
+        angle += 5;
     }
 
     void accelerate()
@@ -95,11 +105,27 @@ public:
     }
     void move()
     {
-        pos_x += std::max<double>(vel_x + 10 * sin(Gosu::degrees_to_radians(angle)), 10 * sin(Gosu::degrees_to_radians(angle)));
-        pos_y += std::min<double>(vel_y - 10*cos(Gosu::degrees_to_radians(angle)),-10*cos(Gosu::degrees_to_radians(angle)));
+        pos_x += 25 *sin(Gosu::degrees_to_radians(angle));
+        pos_y -= 25*cos(Gosu::degrees_to_radians(angle));
     }
     void draw() const
     {
         image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle + 90, 1, 0.63, 2.5, 2);
+    }
+};
+
+class Asteroid : public GameObject {
+public:
+    Asteroid(double x = 0.0, double y = 0.0, double v_x = 0.0, double v_y = 0.0, double a = 0.0, std::string filename = "Assets/Bilder/asteroid.png") : GameObject(filename)
+    {
+        pos_x = x;
+        pos_y = y;
+        vel_x = v_x;
+        vel_y = v_y;
+        angle = a;
+    }
+    void draw() const
+    {
+        image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.5, 0.5, 3, 3);
     }
 };
