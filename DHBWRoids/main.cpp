@@ -28,7 +28,7 @@ class GameWindow : public Gosu::Window
     Player player = {0.98, 0.3, 0,  "media/Starfighter.bmp"};
     Gosu::Song backgroundsong { "Assets/Sounds/SpaceMusic.mp3" };
     std::vector<Asteroid> asteroids;
-    uint16_t maximum_asteroids = 4;
+    uint16_t maximum_asteroids = 5;
 
 
 public:
