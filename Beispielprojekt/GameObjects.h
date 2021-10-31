@@ -25,15 +25,13 @@ public:
 		earn(Gosu::resource_prefix() + "Assets/Sounds/Earn-Sound.wav"),
 		win(Gosu::resource_prefix() + "Assets/Sounds/Winning-Sound.wav");
 
-	Player()
-		:Rakete1("Assets/Bilder/Rakete1.bmp"),
+		Rakete1("Assets/Bilder/Rakete1.bmp"),
 		Rakete2("Assets/Bilder/Rakete2.bmp"),
 		Rakete3("Assets/Bilder/Rakete3.bmp"),
 		Rakete4("Assets/Bilder/Rakete4.bmp"),
 		Rakete5("Assets/Bilder/Rakete5.bmp");
 
-	Player()
-		:Hitmarker1("Assets/Bilder/Hitmarker1.bmp"),
+		Hitmarker1("Assets/Bilder/Hitmarker1.bmp"),
 		Hitmarker2("Assets/Bilder/Hitmarker2.bmp"),
 		Hitmarker3("Assets/Bilder/Hitmarker3.bmp"),
 		Hitmarker4("Assets/Bilder/Hitmarker4.bmp");
