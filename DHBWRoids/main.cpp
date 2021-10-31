@@ -22,7 +22,7 @@ class GameWindow : public Gosu::Window
     std::unique_ptr<Gosu::Image> background_image;
     Gosu::Font font = { 50 };
     std::vector<Projectile> projectiles;
-    Player player = {0.98, 0.35, 0,  "media/Starfighter.bmp"};
+    Player player = {0.98, 0.3, 0,  "media/Starfighter.bmp"};
     Gosu::Song backgroundsong { "Assets/Sounds/SpaceMusic.mp3" };
 
 public:
@@ -57,7 +57,7 @@ public:
         player.move();
         if (Gosu::Input::down(Gosu::KB_SPACE) && (player.reload_time <= 0)) {
             projectiles.push_back({ player.pos_x, player.pos_y, player.vel_x, player.vel_y, player.angle });
-            player.reload_time = 10;
+            player.reload_time = 15;
             player.beep.play();
         }
         for (Projectile& projectile : projectiles) {

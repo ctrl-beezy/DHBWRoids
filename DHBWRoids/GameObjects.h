@@ -95,8 +95,8 @@ public:
     }
     void move()
     {
-        pos_x += vel_x + 15*sin(Gosu::degrees_to_radians(angle));
-        pos_y += vel_y - 15*cos(Gosu::degrees_to_radians(angle));
+        pos_x += std::max<double>(vel_x + 10 * sin(Gosu::degrees_to_radians(angle)), 10 * sin(Gosu::degrees_to_radians(angle)));
+        pos_y += std::min<double>(vel_y - 10*cos(Gosu::degrees_to_radians(angle)),-10*cos(Gosu::degrees_to_radians(angle)));
     }
     void draw() const
     {

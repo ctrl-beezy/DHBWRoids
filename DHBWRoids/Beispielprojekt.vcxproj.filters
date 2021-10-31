@@ -110,12 +110,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_math.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObjects.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menue.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -203,10 +203,12 @@
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="game_math.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="game_math.h" />
+    <ClInclude Include="Menue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

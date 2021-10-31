@@ -1,4 +1,4 @@
-#include <Gosu/Gosu.hpp>
+/*#include <Gosu/Gosu.hpp>
 #include <Gosu/AutoLink.hpp>
 
 extern  uint16_t WINDOWWIDTH;
@@ -33,4 +33,4 @@ void menue() override
 		text.draw_text(highscore_txt, 250, 120, 0, 5, 5);
 		text.draw_text("DHBWRoids", 250, 20, 0, 10, 10);
 	}
-}
+}*/
