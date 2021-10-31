@@ -18,6 +18,87 @@
     <Image Include="rakete.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\Bilder\Asterioid_ganz.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Asterioid_sechzehntel.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Asterioid_viertel.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\asteroid.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\asteroid_small1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\asteroid_small2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\asteroid_small3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\asteroid_small4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Hitmarker_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Hitmarker_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Hitmarker_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Hitmarker_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Projektil1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Projektil2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Rakete1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Rakete2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Rakete3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Rakete4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\Rakete5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\rocket1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\rocket2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\rocket3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\rocket4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\ship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\space.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Bilder\space.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_math.cpp">
