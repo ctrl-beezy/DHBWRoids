@@ -34,15 +34,6 @@ public:
     {
         image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.4, 0.4, 1, 1);
     }
-
-    void move()
-    {
-        pos_x = Gosu::wrap(pos_x + vel_x, 0.0, double(WINDOWWIDTH));
-        pos_y = Gosu::wrap(pos_y + vel_y, 0.0, double(WINDOWHEIGHT));
-
-        vel_x *= drag;
-        vel_y *= drag;
-    }
 };
 
 class Player : public GameObject {
