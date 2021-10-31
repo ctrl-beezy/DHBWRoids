@@ -13,6 +13,13 @@ enum ZOrder {
     Z_UI
 };
 
+enum AsteroidSize {
+    noSize,
+    little,
+    medium,
+    big,
+};
+
 class GameObject
 {
 public:
@@ -116,16 +123,22 @@ public:
 
 class Asteroid : public GameObject {
 public:
-    Asteroid(double x = 0.0, double y = 0.0, double v_x = 0.0, double v_y = 0.0, double a = 0.0, std::string filename = "Assets/Bilder/asteroid.png") : GameObject(filename)
+    uint16_t size;
+    Asteroid(double x = 0.0, double y = 0.0, double v_x = 0.0, double v_y = 0.0, double a = 0.0, std::string filename = "Assets/Bilder/asteroid.png", AsteroidSize s = big) : GameObject(filename)
     {
         pos_x = x;
         pos_y = y;
         vel_x = v_x;
         vel_y = v_y;
         angle = a;
+        size = s;
     }
     void draw() const
     {
-        image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.5, 0.5, 3, 3);
+        image.draw_rot(pos_x, pos_y, Z_OBJECTS, angle, 0.5, 0.5, size, size);
+    }
+
+    bool got_hit(double object_pos_x, double object_pos_y) {
+        return Gosu::distance(pos_x, pos_y, object_pos_x, object_pos_y) < sqrt(image.width()/2 * image.width()/2 + image.height()/2 * image.height()/2);
     }
 };
