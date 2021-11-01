@@ -29,8 +29,7 @@ class GameWindow : public Gosu::Window
     Gosu::Song backgroundsong { "Assets/Sounds/SpaceMusic.mp3" };
     std::vector<Asteroid> asteroids;
     int16_t maximum_asteroids = 4;
-    uint16_t Counter = 0;
-    uint16_t Lives = 3;
+    uint16_t lives = 3;
 
 
 public:
@@ -68,10 +67,9 @@ public:
         //Ship hit?
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
-                Counter++;
-                Lives--;
+                lives--;
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
-                if (Counter == 3)
+                if (lives == 0)
                 {
                     player.lose.play();
                     close();
@@ -101,18 +99,18 @@ public:
             for (Asteroid& asteroid : asteroids) {
                 if (asteroid.got_hit(projectile.pos_x, projectile.pos_y)) {
                     //Asteroid Punktevergabe
+                    projectile.pos_x = -100.0;
                     if (asteroid.size == big) {
                         player.score += 1;
                     }
-                    else if (asteroid.size == medium)
+                    if (asteroid.size == medium)
                     {
                         player.score += 5;
                     }
-                    else if (asteroid.size == little)
+                    if (asteroid.size == little)
                     {
                         player.score += 10;
-                    };
-                    
+                    }
                     //create two smaller asteroids
                     if (asteroid.size == big) {
                         double rand1 = Gosu::random(-1, 1);     //random for different angle and speed
@@ -151,7 +149,7 @@ public:
         }
         // call asteroid movement function for all asteroids
         for (Asteroid& asteroid : asteroids) {
-                ();
+                asteroid.move();
         }
         // call prjectile movement function for all projectiles
         for (Projectile& projectile : projectiles) {
@@ -175,7 +173,7 @@ public:
             projectile.draw();
         }
         font.draw_text("Score: " + std::to_string(player.score), 10, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
-        font.draw_text("Lives: " + std::to_string(Lives), 1100, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
+        font.draw_text("Lives: " + std::to_string(lives), 1100, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
     }
 
     void button_down(Gosu::Button button) override
