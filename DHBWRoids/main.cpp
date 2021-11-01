@@ -72,22 +72,21 @@ public:
                 player.accelerate();
             }
 
-            //Ship hit?
-            for (Asteroid& asteroid : asteroids) {
-                if (asteroid.got_hit(player.pos_x, player.pos_y)) {
-                    player.lives--;
-                    player.explosion.play();
-                    player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
-                    if (player.lives == 0)
-                    {
-                        player.lose.play();
-                        SPIELEN = false;
-                        backgroundsong.stop();
-                    }
+        //Ship hit?
+        for (Asteroid& asteroid : asteroids) {
+            if (asteroid.got_hit(player.pos_x, player.pos_y)) {
+                lives--;
+                player.loss.play();
+                player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
+                if (lives == 0)
+                {
+                    player.lose.play();
+                    close();
                 }
             }
-            // call player character movement function
-            player.move();
+        }
+        // call player character movement function
+        player.move();
 
             // create new Asteroids with increasing maximum everytime all asteroids are cleared
             if (asteroids.size() == 0) {

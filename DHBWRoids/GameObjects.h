@@ -67,10 +67,10 @@ public:
     double drag, accel;
     int16_t reload_time;
     Gosu::Sample beep;
-    Gosu::Sample explosion;
+    Gosu::Sample loss;
     Gosu::Sample lose;
     
-    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/laser.wav", std::string losesound = "Assets/Sounds/explosion.wav") : GameObject(filename), beep(soundname), lose(losesound) {
+    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std::string soundname = "Assets/Sounds/laser.wav", std::string loss = "Assets/Sounds/Loss1.wav", std::string losesound = "Assets/Sounds/Lose-Sound.wav") : GameObject(filename), beep(soundname), loss(loss), lose(losesound) {
         drag = d;
         accel = a;
         score = s;
