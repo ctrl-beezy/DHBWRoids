@@ -22,6 +22,7 @@ const uint16_t WINDOWHEIGHT = 720;
 
 uint16_t SPIELEN;
 uint16_t Counter = 0;
+uint16_t Lives = 3;
 
 class GameWindow : public Gosu::Window
 {
@@ -141,6 +142,7 @@ public:
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
                 Counter++;
+                Lives--;
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
                 if (Counter == 3)
                 {
@@ -171,6 +173,7 @@ public:
             projectile.draw();
         }
         font.draw_text("Score: " + std::to_string(player.score), 10, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
+        font.draw_text("Lives: " + std::to_string(Lives), 1100, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
     }
 
     void button_down(Gosu::Button button) override
