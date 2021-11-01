@@ -7,6 +7,7 @@
 
 const extern uint16_t WINDOWWIDTH;
 const extern uint16_t WINDOWHEIGHT;
+
 enum ZOrder {
     Z_BACKGROUND,
     Z_OBJECTS,
@@ -26,6 +27,8 @@ class GameObject
 public:
     Gosu::Image image;
     Gosu::Sample beep;
+    Gosu::Sample lose;
+
     double pos_x, pos_y, vel_x, vel_y, angle , drag;
 
     GameObject(std::string filename) : image(filename)
@@ -97,9 +100,12 @@ public:
         vel_x *= drag;
         vel_y *= drag;
     }
+
+public:
+    Gosu::Sample lose;
+
+    Player(std::string filename = "media/Starfighter.bmp", std::string soundname = "Assets/Sounds/Lose-Sound.wav") : GameObject(filename), lose(soundname){}
 };
-
-
 class Projectile : public GameObject {
 public:
     Projectile(double x = 0.0, double y = 0.0, double v_x = 0.0, double v_y = 0.0, double a = 0.0, std::string filename = "Assets/Bilder/bullet.png") : GameObject(filename)

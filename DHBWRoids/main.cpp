@@ -14,10 +14,14 @@
 #include <ctime>
 #include <cstdlib>
 #include <cmath>
+#include <fstream>
+#include <time.h>
 
 const uint16_t WINDOWWIDTH = 1280;
 const uint16_t WINDOWHEIGHT = 720;
 
+uint16_t SPIELEN;
+uint16_t Counter = 0;
 
 class GameWindow : public Gosu::Window
 {
@@ -84,8 +88,19 @@ public:
             projectile.move();
             for (Asteroid& asteroid : asteroids) {
                 if (asteroid.got_hit(projectile.pos_x, projectile.pos_y)) {
-                    //Asteroid hit
-                    player.score += 10;
+                    //Asteroid Punktevergabe
+                    if (asteroid.size == big) {
+                        player.score += 1;
+                    }
+                    else if (asteroid.size == medium)
+                    {
+                        player.score += 5;
+                    }
+                    else if (asteroid.size == little)
+                    {
+                        player.score += 10;
+                    };
+                    
                     //create two smaller asteroids
                     if (asteroid.size == big) {
                         double rand1 = Gosu::random(-1, 1);     //random for different angle and speed
@@ -125,7 +140,13 @@ public:
         //Ship hit?
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
-                //player.pos_x = -100;
+                Counter++;
+                player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
+                if (Counter == 3)
+                {
+                    player.lose.play();
+                    close();
+                }
             }
         }
         // call asteroid movement function for all asteroids
@@ -139,6 +160,7 @@ public:
 
     void draw() override
     {
+        SPIELEN++;      //set counter 1 during game
         // call draw function for all gameObjects
         player.draw();
         background_image->draw(0, 0, Z_BACKGROUND);
@@ -154,7 +176,7 @@ public:
     void button_down(Gosu::Button button) override
     {
         if (button == Gosu::KB_ESCAPE) {
-            close();
+            SPIELEN--;      //set counter 0
         }
         else {
             Window::button_down(button);
