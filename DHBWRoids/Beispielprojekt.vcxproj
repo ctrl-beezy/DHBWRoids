@@ -210,11 +210,12 @@
     <ClInclude Include="Menue.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="..\..\..\..\Desktop\Studium Elektrotechnik\3. Semester\Objektorientiertes Programmieren 1\Beispielprojekt\Sounds\Explosion.wav" />
+    <Media Include="..\..\..\..\Downloads\Loss.wav" />
     <Media Include="Assets\Sounds\Background-Space1.wav" />
     <Media Include="Assets\Sounds\Background-Space2.wav" />
     <Media Include="Assets\Sounds\Background-Space3.wav" />
     <Media Include="Assets\Sounds\Earn-Sound.wav" />
-    <Media Include="Assets\Sounds\explosion.wav" />
     <Media Include="Assets\Sounds\Laser-Sound.wav" />
     <Media Include="Assets\Sounds\laser.wav" />
     <Media Include="Assets\Sounds\Lose-Sound.wav" />

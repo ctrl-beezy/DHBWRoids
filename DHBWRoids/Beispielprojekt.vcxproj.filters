@@ -135,9 +135,6 @@
     <Media Include="Assets\Sounds\Earn-Sound.wav">
       <Filter>Resource Files</Filter>
     </Media>
-    <Media Include="Assets\Sounds\explosion.wav">
-      <Filter>Resource Files</Filter>
-    </Media>
     <Media Include="Assets\Sounds\laser.wav">
       <Filter>Resource Files</Filter>
     </Media>
@@ -154,6 +151,12 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="Assets\Sounds\zap1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\..\..\Desktop\Studium Elektrotechnik\3. Semester\Objektorientiertes Programmieren 1\Beispielprojekt\Sounds\Explosion.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\..\..\Downloads\Loss.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>
