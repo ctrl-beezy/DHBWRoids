@@ -88,6 +88,7 @@ public:
                     player.score = 0;
                     asteroids.clear();
                     projectiles.clear();
+                    break;
                 }
             }
         }
