@@ -73,7 +73,7 @@ public:
         // create new projectiles and play sound, reset reload time
         if (Gosu::Input::down(Gosu::KB_SPACE) && (player.reload_time <= 0)) {
             projectiles.push_back({ player.pos_x, player.pos_y, player.vel_x, player.vel_y, player.angle });
-            player.reload_time =  10;   //waiting 167ms for next projectile; (10/60)frames per second
+            player.reload_time =  0;   //waiting 167ms for next projectile; (10/60)frames per second
             player.beep.play();         //playing projectile sound
         }
         // call player character movement function
