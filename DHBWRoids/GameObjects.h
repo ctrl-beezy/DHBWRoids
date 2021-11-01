@@ -12,7 +12,8 @@ const extern uint16_t WINDOWHEIGHT;
 enum ZOrder {
     Z_BACKGROUND,
     Z_OBJECTS,
-    Z_UI
+    Z_UI,
+    Z_MENUE
 };
 
 // enum for Asteroidsizes
@@ -62,6 +63,7 @@ class Player : public GameObject {
 
 public:
     uint32_t score;
+    uint16_t lives;
     double drag, accel;
     int16_t reload_time;
     Gosu::Sample beep;
@@ -73,6 +75,7 @@ public:
         accel = a;
         score = s;
         reload_time = 0;
+        lives = 3;
     }
     void turn_left()
     {
@@ -103,9 +106,6 @@ public:
         vel_x *= drag;
         vel_y *= drag;
     }
-
-    Player(std::string filename = "media/Starfighter.bmp", std::string explosionsound = "Assets/Sounds/explosion.wav") : GameObject(filename), lose(explosionsound) {};
-    Player(std::string filename = "media/Starfighter.bmp", std::string losesound = "Assets/Sounds/Lose-Sound.wav") : GameObject(filename), lose(losesound) {};
 };
 // class for projectiles
 class Projectile : public GameObject {
