@@ -187,7 +187,7 @@ public:
         mx = input().mouse_x();
         my = input().mouse_y();
         //Play
-        if (input().down(Gosu::MS_LEFT) && (mx > (800 / 3)) && (mx < ((800 * 2) / 3)) && (my > (600 / 3)) && (my < (600 * 2 / 3)))
+        if (input().down(Gosu::MS_LEFT) && (mx > (WINDOWWIDTH / 3)) && (mx < ((WINDOWWIDTH * 2) / 3)) && (my > (600 / 3)) && (my < (600 * 2 / 3)))
         {
             score_txt = std::to_string(player.score);
             player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
@@ -195,7 +195,7 @@ public:
             SPIELEN = true;
         }
         //Close
-        if (input().down(Gosu::MS_LEFT) && (mx > (800 / 3)) && (mx < ((800 * 2) / 3)) && (my > ((600 / 3)) + 200) && (my < ((600 * 2 / 3) + 200)))
+        if (input().down(Gosu::MS_LEFT) && (mx > (WINDOWWIDTH / 3)) && (mx < ((WINDOWWIDTH * 2) / 3)) && (my > ((600 / 3)) + 200) && (my < ((600 * 2 / 3) + 200)))
         {
             Window::close();
         }
@@ -220,21 +220,21 @@ public:
         }
         else {
             graphics().draw_quad(
-                (800 / 3), (600 / 3), Gosu::Color::GREEN,
-                ((800 / 3) * 2), (600 / 3), Gosu::Color::GREEN,
-                ((800 / 3) * 2), ((600 / 3) * 2), Gosu::Color::GREEN,
-                (800 / 3), ((600 / 3) * 2), Gosu::Color::GREEN, 0.0);
+                (WINDOWWIDTH / 3), (600 / 3), Gosu::Color::GREEN,
+                ((WINDOWWIDTH / 3) * 2), (600 / 3), Gosu::Color::GREEN,
+                ((WINDOWWIDTH / 3) * 2), ((600 / 3) * 2), Gosu::Color::GREEN,
+                (WINDOWWIDTH / 3), ((600 / 3) * 2), Gosu::Color::GREEN, 0.0);
 
             graphics().draw_quad(
-                (800 / 3), ((600 / 3) + 200), Gosu::Color::RED,
-                ((800 / 3) * 2), ((600 / 3) + 200), Gosu::Color::RED,
-                ((800 / 3) * 2), (((600 / 3) * 2) + 200), Gosu::Color::RED,
-                (800 / 3), (((600 / 3) * 2) + 200), Gosu::Color::RED, 0.0);
+                (WINDOWWIDTH / 3), ((600 / 3) + 200), Gosu::Color::RED,
+                ((WINDOWWIDTH / 3) * 2), ((600 / 3) + 200), Gosu::Color::RED,
+                ((WINDOWWIDTH / 3) * 2), (((600 / 3) * 2) + 200), Gosu::Color::RED,
+                (WINDOWWIDTH / 3), (((600 / 3) * 2) + 200), Gosu::Color::RED, 0.0);
 
-            text.draw_text("Play", 310, 270, 0, 10, 10);
-            text.draw_text("Close", 290, 470, 0, 10, 10);
-            text.draw_text(highscore_txt, 250, 120, 0, 5, 5);
-            text.draw_text("DHBWROIDS", 250, 20, 0, 10, 10);
+            text.draw_text("Play", (WINDOWWIDTH/2)-90, 270, 0, 10, 10);
+            text.draw_text("Close", (WINDOWWIDTH / 2)-115, 470, 0, 10, 10);
+            text.draw_text(highscore_txt, (WINDOWWIDTH /2)-160, 120, 0, 5, 5);
+            text.draw_text("DHBWROIDS", (WINDOWWIDTH / 2)-280, 20, 0, 10, 10);
         }
     }
 
