@@ -203,11 +203,9 @@
   <ItemGroup>
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObjects.h" />
-    <ClInclude Include="Menue.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Desktop\Studium Elektrotechnik\3. Semester\Objektorientiertes Programmieren 1\Beispielprojekt\Sounds\Explosion.wav" />
