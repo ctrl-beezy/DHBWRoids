@@ -26,8 +26,6 @@ class GameObject
 {
 public:
     Gosu::Image image;
-    Gosu::Sample beep;
-    Gosu::Sample lose;
 
     double pos_x, pos_y, vel_x, vel_y, angle , drag;
 
@@ -64,8 +62,9 @@ public:
     double drag, accel;
     int16_t reload_time;
     Gosu::Sample beep;
+    Gosu::Sample lose;
     
-    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/laser.wav") : GameObject(filename), beep(soundname) {
+    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/laser.wav", std::string losesound = "Assets/Sounds/explosion.wav") : GameObject(filename), beep(soundname), lose(losesound) {
         drag = d;
         accel = a;
         score = s;
@@ -100,11 +99,6 @@ public:
         vel_x *= drag;
         vel_y *= drag;
     }
-
-public:
-    Gosu::Sample lose;
-
-    Player(std::string filename = "media/Starfighter.bmp", std::string soundname = "Assets/Sounds/Lose-Sound.wav") : GameObject(filename), lose(soundname){}
 };
 class Projectile : public GameObject {
 public:

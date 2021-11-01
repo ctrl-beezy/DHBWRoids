@@ -68,10 +68,10 @@ public:
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
                 lives--;
+                player.lose.play();
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
                 if (lives == 0)
                 {
-                    player.lose.play();
                     close();
                 }
             }
