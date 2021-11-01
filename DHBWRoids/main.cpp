@@ -75,13 +75,15 @@ public:
         //Ship hit?
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
-                lives--;
+                player.lives--;
                 player.loss.play();
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
-                if (lives == 0)
+                if (player.lives == 0)
                 {
                     player.lose.play();
-                    close();
+                    SPIELEN = false;
+                    player.lives = 3;
+                    backgroundsong.stop();
                 }
             }
         }
@@ -183,6 +185,8 @@ public:
         if (input().down(Gosu::MS_LEFT) && (mx > (800 / 3)) && (mx < ((800 * 2) / 3)) && (my > (600 / 3)) && (my < (600 * 2 / 3)))
         {
             player.score = 0;
+            asteroids.clear();
+            projectiles.clear();
             score_txt = std::to_string(player.score);
             player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
             score_txt = "Score: " + score_txt;
