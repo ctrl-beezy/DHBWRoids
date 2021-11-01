@@ -101,9 +101,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="game_math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -115,14 +112,46 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game_math.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjects.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Menue.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Sounds\Background-Space1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Background-Space2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Background-Space3.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Earn-Sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\explosion.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\laser.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Laser-Sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Lose-Sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\SpaceMusic.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\Winning-Sound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Assets\Sounds\zap1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

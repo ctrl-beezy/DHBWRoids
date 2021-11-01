@@ -4,9 +4,7 @@
 extern  uint16_t WINDOWWIDTH;
 extern	uint16_t WINDOWHEIGHT;
 
-public:
-	GameWindow()
-		:Window(WINDOWWIDTH, WINDOWHEIGHT, true);
+public: GameWindow() :Window(WINDOWWIDTH, WINDOWHEIGHT, true);
 
 void menue() override
 {

@@ -10,7 +10,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "game_math.h"
 #include "GameObjects.h"
 #include <ctime>
 #include <cstdlib>
@@ -39,8 +38,7 @@ public:
         background_image.reset(new Gosu::Image(filename, Gosu::IF_TILEABLE));
 
         player.warp(WINDOWWIDTH/2, WINDOWHEIGHT/2);
-        player.image.data();
-        
+        player.image.data();        
     }
 
 
@@ -69,21 +67,14 @@ public:
             for (size_t i = 0; i < maximum_asteroids; i++) {
                     asteroids.push_back({ Gosu::random(0, WINDOWWIDTH), Gosu::random(0, WINDOWHEIGHT), 5*Gosu::random(-1, 1),5 * Gosu::random(-1,1), Gosu::random(0, 90) });
             }
+            maximum_asteroids++;
         }
 
-        // delete off screen projectiles
-        if(projectiles.size() > 0){
-            auto i = std::remove_if(projectiles.begin(), projectiles.end(), [&](Projectile o) {return (o.pos_x < 0 || o.pos_y < 0 || o.pos_x > WINDOWWIDTH || o.pos_y > WINDOWHEIGHT);});
-            if (i != projectiles.end()) {
-                projectiles.erase(i);
-            }
-        }
         // create new projectiles and play sound, reset reload time
         if (Gosu::Input::down(Gosu::KB_SPACE) && (player.reload_time <= 0)) {
             projectiles.push_back({ player.pos_x, player.pos_y, player.vel_x, player.vel_y, player.angle });
-            player.reload_time = 15;
+            player.reload_time =  10;
             player.beep.play();
-            // check collision with asteroids
         }
         // call player character movement function
         player.move();
@@ -94,7 +85,7 @@ public:
             for (Asteroid& asteroid : asteroids) {
                 if (asteroid.got_hit(projectile.pos_x, projectile.pos_y)) {
                     //Asteroid hit
-                    projectile.pos_x = -100;
+                    player.score += 10;
                     //create two smaller asteroids
                     if (asteroid.size == big) {
                         double rand1 = Gosu::random(-1, 1);
@@ -109,6 +100,7 @@ public:
                         newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 7*rand2, 7*rand2, Gosu::random(0,90), "Assets/Bilder/asteroid.png", little});
 
                     }
+                    projectile.pos_x = -100;
                     asteroid.pos_x = -100;
                 }
             }
@@ -120,8 +112,21 @@ public:
                 asteroids.erase(i);
             }
         }
+        //delete off screen projectiles
+        if(projectiles.size() > 0){
+            auto i = std::remove_if(projectiles.begin(), projectiles.end(), [&](Projectile o) {return (o.pos_x < 0 || o.pos_y < 0 || o.pos_x > WINDOWWIDTH || o.pos_y > WINDOWHEIGHT);});
+            if (i != projectiles.end()) {
+                projectiles.erase(i);
+            }
+        }
         for (Asteroid newAsteroid : newAsteroids) {
             asteroids.push_back(newAsteroid);
+        }
+        //Ship hit?
+        for (Asteroid& asteroid : asteroids) {
+            if (asteroid.got_hit(player.pos_x, player.pos_y)) {
+                //player.pos_x = -100;
+            }
         }
         // call asteroid movement function for all asteroids
         for (Asteroid& asteroid : asteroids) {
@@ -137,11 +142,11 @@ public:
         // call draw function for all gameObjects
         player.draw();
         background_image->draw(0, 0, Z_BACKGROUND);
-        for (Projectile& projectile : projectiles) {
-            projectile.draw();
-        }
-        for (Asteroid& asteroid : asteroids) {
+        for (Asteroid asteroid : asteroids) {
             asteroid.draw();
+        }
+        for (Projectile projectile : projectiles) {
+            projectile.draw();
         }
         font.draw_text("Score: " + std::to_string(player.score), 10, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
     }

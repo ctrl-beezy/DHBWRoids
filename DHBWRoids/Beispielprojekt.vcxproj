@@ -201,14 +201,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObjects.cpp" />
-    <ClCompile Include="game_math.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObjects.h" />
-    <ClInclude Include="game_math.h" />
     <ClInclude Include="Menue.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Sounds\Background-Space1.wav" />
+    <Media Include="Assets\Sounds\Background-Space2.wav" />
+    <Media Include="Assets\Sounds\Background-Space3.wav" />
+    <Media Include="Assets\Sounds\Earn-Sound.wav" />
+    <Media Include="Assets\Sounds\explosion.wav" />
+    <Media Include="Assets\Sounds\Laser-Sound.wav" />
+    <Media Include="Assets\Sounds\laser.wav" />
+    <Media Include="Assets\Sounds\Lose-Sound.wav" />
+    <Media Include="Assets\Sounds\SpaceMusic.mp3" />
+    <Media Include="Assets\Sounds\Winning-Sound.wav" />
+    <Media Include="Assets\Sounds\zap1.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

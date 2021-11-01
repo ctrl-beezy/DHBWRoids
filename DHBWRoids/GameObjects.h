@@ -20,6 +20,7 @@ enum AsteroidSize {
     big,
 };
 
+
 class GameObject
 {
 public:
@@ -56,13 +57,12 @@ public:
 class Player : public GameObject {
 
 public:
-
     uint32_t score;
     double drag, accel;
     int16_t reload_time;
     Gosu::Sample beep;
     
-    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/Laser-Sound.wav") : GameObject(filename), beep(soundname) {
+    Player(double d = 1.0, double a = 0.5, uint32_t s = 0, std::string filename = "media/Starfighter.bmp", std:: string soundname = "Assets/Sounds/laser.wav") : GameObject(filename), beep(soundname) {
         drag = d;
         accel = a;
         score = s;
@@ -112,7 +112,7 @@ public:
     }
     void move()
     {
-        pos_x += 25 *sin(Gosu::degrees_to_radians(angle));
+        pos_x += 25*sin(Gosu::degrees_to_radians(angle));
         pos_y -= 25*cos(Gosu::degrees_to_radians(angle));
     }
     void draw() const
