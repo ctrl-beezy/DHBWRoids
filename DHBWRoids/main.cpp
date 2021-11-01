@@ -30,7 +30,7 @@ class GameWindow : public Gosu::Window
 {
     std::unique_ptr<Gosu::Image> background_image;
     Gosu::Font font = { 50 };
-    Gosu::Font text = {10};
+    Gosu::Font text = {100};
     std::vector<Projectile> projectiles;
     Player player = {0.962, 0.3, 0,  "media/Starfighter.bmp"};
     Gosu::Song backgroundsong { "Assets/Sounds/SpaceMusic.mp3" };
@@ -232,10 +232,10 @@ public:
                 ((WINDOWWIDTH / 3) * 2), (((600 / 3) * 2) + 200), Gosu::Color::RED,
                 (WINDOWWIDTH / 3), (((600 / 3) * 2) + 200), Gosu::Color::RED, 0.0);
 
-            text.draw_text("Play", (WINDOWWIDTH/2)-90, 270, 0, 10, 10);
-            text.draw_text("Close", (WINDOWWIDTH / 2)-115, 470, 0, 10, 10);
-            text.draw_text(highscore_txt, (WINDOWWIDTH /2)-160, 120, 0, 5, 5);
-            text.draw_text("DHBWROIDS", (WINDOWWIDTH / 2)-280, 20, 0, 10, 10);
+            text.draw_text("Play", (WINDOWWIDTH/2)-90, 270, Z_MENUE, 1, 1);
+            text.draw_text("Close", (WINDOWWIDTH / 2)-115, 470, Z_MENUE, 1, 1);
+            text.draw_text(highscore_txt, (WINDOWWIDTH /2)-160, 120, Z_MENUE, 0.5, 0.5);
+            text.draw_text("DHBWROIDS", (WINDOWWIDTH / 2)-280, 20, Z_MENUE, 1, 1);
         }
     }
     //Pause with Escape
