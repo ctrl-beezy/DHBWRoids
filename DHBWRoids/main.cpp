@@ -18,7 +18,7 @@
 
 const uint16_t WINDOWWIDTH = 1280;
 const uint16_t WINDOWHEIGHT = 720;
-bool SPIELEN = false;
+bool PLAY = false;
 
 
 
@@ -32,7 +32,7 @@ class GameWindow : public Gosu::Window
     Gosu::Font font = { 50 };
     Gosu::Font text = {10};
     std::vector<Projectile> projectiles;
-    Player player = {0.965, 0.3, 0,  "media/Starfighter.bmp"};
+    Player player = {0.962, 0.3, 0,  "media/Starfighter.bmp"};
     Gosu::Song backgroundsong { "Assets/Sounds/SpaceMusic.mp3" };
     std::vector<Asteroid> asteroids;
     int16_t maximum_asteroids = 4;
@@ -53,7 +53,7 @@ public:
 
     void update() override
     {
-        if (SPIELEN) {
+        if (PLAY) {
             //temporary vector to store new Asteroids
             std::vector<Asteroid> newAsteroids;
 
@@ -81,7 +81,7 @@ public:
                 if (player.lives == 0)
                 {
                     player.lose.play();
-                    SPIELEN = false;
+                    PLAY = false;
                     player.lives = 3;
                     backgroundsong.stop();
                     maximum_asteroids = 4;
@@ -192,7 +192,7 @@ public:
             score_txt = std::to_string(player.score);
             player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
             score_txt = "Score: " + score_txt;
-            SPIELEN = true;
+            PLAY = true;
         }
         //Close
         if (input().down(Gosu::MS_LEFT) && (mx > (WINDOWWIDTH / 3)) && (mx < ((WINDOWWIDTH * 2) / 3)) && (my > ((600 / 3)) + 200) && (my < ((600 * 2 / 3) + 200)))
@@ -205,7 +205,7 @@ public:
     void draw() override
     {
         background_image->draw(0, 0, Z_BACKGROUND);
-        if (SPIELEN){
+        if (PLAY){
         //set counter 1 during game
         // call draw function for all gameObjects
         player.draw();
@@ -218,6 +218,7 @@ public:
         font.draw_text("Score: " + std::to_string(player.score), 10, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
         font.draw_text("Lives: " + std::to_string(player.lives), 1100, 10, Z_UI, 1, 1, Gosu::Color::GREEN);
         }
+        //Menue
         else {
             graphics().draw_quad(
                 (WINDOWWIDTH / 3), (600 / 3), Gosu::Color::GREEN,
@@ -237,11 +238,12 @@ public:
             text.draw_text("DHBWROIDS", (WINDOWWIDTH / 2)-280, 20, 0, 10, 10);
         }
     }
-
+    //Pause with Escape
     void button_down(Gosu::Button button) override
     {
         if (button == Gosu::KB_ESCAPE) {
-            SPIELEN = false;
+            PLAY = false;
+            backgroundsong.stop();
         }
         else {
             Window::button_down(button);
@@ -251,6 +253,7 @@ public:
 
 int main()
 {
+    //seed pseudorandom numbers
     std::srand(std::time(0));
     //load highscore
     std::ifstream f("HighScore.txt");
