@@ -8,12 +8,14 @@
 const extern uint16_t WINDOWWIDTH;
 const extern uint16_t WINDOWHEIGHT;
 
+//enum for draw heights
 enum ZOrder {
     Z_BACKGROUND,
     Z_OBJECTS,
     Z_UI
 };
 
+// enum for Asteroidsizes
 enum AsteroidSize {
     noSize,
     little,
@@ -21,7 +23,7 @@ enum AsteroidSize {
     big,
 };
 
-
+// parent class for all game objects
 class GameObject
 {
 public:
@@ -55,6 +57,7 @@ public:
     }
 };
 
+// class for player character
 class Player : public GameObject {
 
 public:
@@ -103,6 +106,7 @@ public:
 
     
 };
+// class for projectiles
 class Projectile : public GameObject {
 public:
     Projectile(double x = 0.0, double y = 0.0, double v_x = 0.0, double v_y = 0.0, double a = 0.0, std::string filename = "Assets/Bilder/bullet.png") : GameObject(filename)
@@ -124,6 +128,7 @@ public:
     }
 };
 
+// class for asteroids
 class Asteroid : public GameObject {
 public:
     uint16_t size;
@@ -142,6 +147,6 @@ public:
     }
 
     bool got_hit(double object_pos_x, double object_pos_y) {
-        return Gosu::distance(pos_x, pos_y, object_pos_x, object_pos_y) < sqrt(image.width()/2 * image.width()/2 + image.height()/2 * image.height()/2);
+        return Gosu::distance(pos_x, pos_y, object_pos_x, object_pos_y) < sqrt(image.width()/1.2 * image.width()/1.2 + image.height()/1.2 * image.height()/1.2);
     }
 };
