@@ -68,11 +68,12 @@ public:
         for (Asteroid& asteroid : asteroids) {
             if (asteroid.got_hit(player.pos_x, player.pos_y)) {
                 lives--;
-                player.lose.play();
+                player.explosion.play();
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
                 if (lives == 0)
                 {
-                    SPIELEN = false;
+                    player.lose.play();
+                    close();
                 }
             }
         }
@@ -113,13 +114,13 @@ public:
                     }
                     //create two smaller asteroids
                     if (asteroid.size == big) {
-                        double rand1 = Gosu::random(-1, 1);     //random for different angle and speed
+                        double rand1 = Gosu::random(-1, 1);     //random for different angle and speed (first split)
                         double rand2 = Gosu::random(-1, 1);
                         newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 6*rand1, 6*rand2, rand1, "Assets/Bilder/asteroid.png", medium});
                         newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 6*rand2, 6*rand1, rand2, "Assets/Bilder/asteroid.png", medium});
                     }
                     if (asteroid.size == medium) {
-                        double rand1 = Gosu::random(-1,1);
+                        double rand1 = Gosu::random(-1,1);      //random for different angle and speed (second split)
                         double rand2 = Gosu::random(-1,1);
                         newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 7*rand1, 7*rand1, Gosu::random(0,90), "Assets/Bilder/asteroid.png", little});
                         newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 7*rand2, 7*rand2, Gosu::random(0,90), "Assets/Bilder/asteroid.png", little});
