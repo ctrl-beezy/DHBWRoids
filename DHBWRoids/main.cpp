@@ -72,7 +72,7 @@ public:
                 player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
                 if (lives == 0)
                 {
-                    close();
+                    SPIELEN = false;
                 }
             }
         }
