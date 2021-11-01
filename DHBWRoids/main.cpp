@@ -84,6 +84,10 @@ public:
                     SPIELEN = false;
                     player.lives = 3;
                     backgroundsong.stop();
+                    maximum_asteroids = 4;
+                    player.score = 0;
+                    asteroids.clear();
+                    projectiles.clear();
                 }
             }
         }
@@ -184,9 +188,6 @@ public:
         //Play
         if (input().down(Gosu::MS_LEFT) && (mx > (800 / 3)) && (mx < ((800 * 2) / 3)) && (my > (600 / 3)) && (my < (600 * 2 / 3)))
         {
-            player.score = 0;
-            asteroids.clear();
-            projectiles.clear();
             score_txt = std::to_string(player.score);
             player.warp(WINDOWWIDTH / 2, WINDOWHEIGHT / 2);
             score_txt = "Score: " + score_txt;
