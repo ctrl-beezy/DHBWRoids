@@ -197,6 +197,7 @@
     <Image Include="Assets\Bilder\ship.png" />
     <Image Include="Assets\Bilder\space.jpg" />
     <Image Include="Assets\Bilder\space.png" />
+    <Image Include="media\Starfighter.bmp" />
     <Image Include="rakete.png" />
   </ItemGroup>
   <ItemGroup>

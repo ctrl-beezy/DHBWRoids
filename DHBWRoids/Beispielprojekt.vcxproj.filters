@@ -99,6 +99,9 @@
     <Image Include="Assets\Bilder\space.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="media\Starfighter.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObjects.cpp">
