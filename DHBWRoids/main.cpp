@@ -16,6 +16,7 @@
 #include <cmath>
 #include <fstream>
 
+//Global variables
 const uint16_t WINDOWWIDTH = 1280;
 const uint16_t WINDOWHEIGHT = 720;
 bool PLAY = false;
@@ -141,7 +142,7 @@ public:
                             newAsteroids.push_back({ asteroid.pos_x, asteroid.pos_y, 7 * rand2, 7 * rand2, Gosu::random(0,90), "Assets/Bilder/asteroid.png", little });
 
                         }
-                        asteroid.pos_y = -100, 0;
+                        asteroid.pos_y = -100;
                     }
                 }
             }
@@ -244,9 +245,6 @@ public:
         if (button == Gosu::KB_ESCAPE) {
             PLAY = false;
             backgroundsong.stop();
-        }
-        else {
-            Window::button_down(button);
         }
     }
 };
